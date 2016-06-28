@@ -98,7 +98,7 @@ def prepare_output_index(es, i_client, output_index_name, query_str, index_creat
   except elasticsearch.exceptions.NotFoundError as e:
     print("[OUTPUT] No such index '%s'"  % output_index_name)
     print("[OUTPUT] Creating index '%s'" % output_index_name)
-    i_client.create(index=output_index_name, body=index_create_str, timeout=args.timeout, master_timeout=args.timeout)
+    i_client.create(index=output_index_name, body=index_create_str, timeout=args.timeout, master_timeout=args.timeout*1000)
 
 def copy_index_creation(input_es, input_index_name, output_es, output_i_client, output_index_name, query_str):
   try:
